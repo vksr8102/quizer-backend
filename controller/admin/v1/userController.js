@@ -2,7 +2,7 @@ import { user } from "../../../model/user.js";
 import { asyncHandler } from "../../../utils/asyncHandler.js";
 import { checkUniqueFieldsInDatabase } from "../../../utils/comon.js";
 import { count, create, deleteOne, findOne, paginate, updateOne } from "../../../utils/dbServices.js";
-import { findFilterKeys, updateSchemaKeys } from "../../../utils/validation/userValidation.js";
+import { findFilterKeys, schemaKeys, updateSchemaKeys } from "../../../utils/validation/userValidation.js";
 import { validateFilterWithJoi, validateParamsWithJoi } from "../../../utils/validationRequest.js";
 
  /**
@@ -121,7 +121,7 @@ const addUser = async (req, res) => {
         name,email,createdBy
       } = req.body;
       if (!createdBy || !email && !name) {
-        return res.badRequest({ message: 'Insufficient request parameters! email ,name and admin  is required.' });
+        return res.badRequest({ message: 'Insufficient request parameters! email , name and admin  is required.' });
       }
       
       if(req.user.id.toString()!==createdBy.toString())
