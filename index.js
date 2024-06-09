@@ -45,7 +45,7 @@ userappPassportStategy(passport);
 adminPassportStategy(passport)
 googlePassportStatgy(passport);
 app.get("/",(req,res) => {
-  res.send('Hello from techpyro Backend!')
+  res.send('Hello from Quizer Backend!')
 })
 
 app.listen(port, () => {

@@ -118,10 +118,10 @@ return res.success({data:updateUserData});
 const addUser = async (req, res) => {
     try {
       let {
-        phone,email,createdBy
+        name,email,createdBy
       } = req.body;
-      if (!createdBy || !email && !phone) {
-        return res.badRequest({ message: 'Insufficient request parameters! email or phone and admin  is required.' });
+      if (!createdBy || !email && !name) {
+        return res.badRequest({ message: 'Insufficient request parameters! email ,name and admin  is required.' });
       }
       
       if(req.user.id.toString()!==createdBy.toString())
@@ -191,9 +191,7 @@ const addUser = async (req, res) => {
         if(req.body && typeof req.body.options ==="object" && req.body.options !==null){
             options ={...req.body.options};
         }
-        // console.log(options)
         let foundUsers = await paginate(user,query,options);
-        // console.log(foundUsers)
         if(!foundUsers && !foundUsers.data && !foundUsers.data.length){
             return res.recordNotFound()
         }
