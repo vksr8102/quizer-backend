@@ -56,6 +56,10 @@ updatedBy:{
     ref:'user',
     type:Schema.Types.ObjectId
 },
+countrycode:{
+type:Number,
+default:91
+},
 isActive:{type:Boolean},
 isDeleted:{type:Boolean},
 createdAt:{
