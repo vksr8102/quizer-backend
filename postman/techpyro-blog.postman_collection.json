@@ -1,0 +1,1353 @@
+{
+	"info": {
+		"_postman_id": "e87463cc-2f66-46ac-8a6e-fa986a56a3c1",
+		"name": "techpyro-blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26695344",
+		"_collection_link": "https://martian-trinity-584537.postman.co/workspace/Team-Workspace~27d3861e-8baf-49ec-8fa5-9c4a5159f11b/collection/26695344-e87463cc-2f66-46ac-8a6e-fa986a56a3c1?action=share&source=collection_link&creator=26695344"
+	},
+	"item": [
+		{
+			"name": "userapp",
+			"item": [
+				{
+					"name": "authRoute",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"vikash kumar\",\r\n    \"email\":\"vksr2063@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/userapp/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"userapp",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"vksr2063@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/userapp/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"userapp",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "send-otp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"vksr2063@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/userapp/auth/send-otp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"userapp",
+										"auth",
+										"send-otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reset-password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\":214998,\r\n    \"newPassword\":\"987654321\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/userapp/auth/reset-password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"userapp",
+										"auth",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "googleLogin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"credentials\":{\r\n    \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6ImEyMzhkZDA0Y2JhYTU4MGIzMDRjODgxZTFjMDA4ZWMyOGZiYmFkZGMiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoidmlrYXNoIGt1bWFyIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0lWR2dvdXEyb0RvTkl0MF9rMWxmYWVmN1c3WDBHZXJGbnVJZGRrX3oyakFHWkozOVU9czk2LWMiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYmxvZy13ZWItZjY3NzUiLCJhdWQiOiJibG9nLXdlYi1mNjc3NSIsImF1dGhfdGltZSI6MTcxNDU2OTY2NiwidXNlcl9pZCI6IlNleWwxZEZPSmZZeVVzaGRMTEw1cTBjQlFvazEiLCJzdWIiOiJTZXlsMWRGT0pmWXlVc2hkTExMNXEwY0JRb2sxIiwiaWF0IjoxNzE0NTY5NjY2LCJleHAiOjE3MTQ1NzMyNjYsImVtYWlsIjoidmlrYXNoa3VtYXJ2aWR5YXJ0aGk0NTIwMDFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMDY3NTcyNjkxMzE3MTY5ODAwNDgiXSwiZW1haWwiOlsidmlrYXNoa3VtYXJ2aWR5YXJ0aGk0NTIwMDFAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.RaI-pa5VoLF2kUq_T4JrsjimX-aCk8oiCT5stI_mn0VdWHuRZ4pJRO2gy0_WHgRfN_siCRV9mTYAS2tb8E0DZMABMCuWlWw81-e3LzaZwVcz-zTh3H38n1MVs23RXWgLGp-13u-2CHMQAbPpEdQn2WXhRCwiXDqiggH0S1sUGhKnuxgelB6n-f4Yb0bnR3W8I8HHDQmznMfrwkA_s690PXTbwcWJ6Y_263cRp7wi8GRyUWJuqNzrwdBJtjdhfhtp6XXQaZm0HFnSdWS7CHZJJywNfKv6MPoaE8F5qf4ep-nVzXsSOEYK5U51fV3IfHCBeIyDA1p9gVhF6eZ9BpoAzg\"\r\n}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/userapp/auth/firebase/google",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"userapp",
+										"auth",
+										"firebase",
+										"google"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "validate-otp",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "userRoute",
+					"item": [
+						{
+							"name": "getuser",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/userapp/user/me",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"user",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateUser",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"vikashkumarvidyarthi45200@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/userapp/user/update/66322a107aa5b536e7ce89e9",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"user",
+										"update",
+										"66322a107aa5b536e7ce89e9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "soft-delete",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BlogRoute",
+					"item": [
+						{
+							"name": "list",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\":{},\r\n  \"options\": {\r\n    \"collation\": \"\",\r\n    \"sort\": {\"name\":1},\r\n    \"populate\": \"\",\r\n    \"projection\": \"\",\r\n    \"lean\": false,\r\n    \"leanWithId\": true,\r\n    \"page\": 1,\r\n    \"limit\": 10,\r\n    \"pagination\": true,\r\n    \"useEstimatedCount\": false,\r\n    \"useCustomCountFn\": false,\r\n    \"forceCountFn\": false,\r\n    \"read\": {},\r\n    \"options\": {}\r\n  },\r\n  \"isCountOnly\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/userapp/blog/list",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"blog",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getSingleBlog",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/userapp/blog/get/6644dee269a0c8a2ba757e0c",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"blog",
+										"get",
+										"6644dee269a0c8a2ba757e0c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "count",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "like",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "commentRoute",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comment\":\"secound comment\",\r\n    \"blogId\":\"6644ecfc13c7bf08f9753213\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/userapp/comment/create",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"comment",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\":{},\r\n  \"options\": {\r\n    \"collation\": \"\",\r\n    \"sort\": {\"name\":1},\r\n    \"populate\": \"\",\r\n    \"projection\": \"\",\r\n    \"lean\": false,\r\n    \"leanWithId\": true,\r\n    \"page\": 1,\r\n    \"limit\": 10,\r\n    \"pagination\": true,\r\n    \"useEstimatedCount\": false,\r\n    \"useCustomCountFn\": false,\r\n    \"forceCountFn\": false,\r\n    \"read\": {},\r\n    \"options\": {}\r\n  },\r\n  \"isCountOnly\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/userapp/comment/list",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"comment",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addReply",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"commentId\":\"66461bad3a71b642fb93b9da\",\r\n    \"reply\":\"Nice Comment 🙂\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/userapp/comment/create-reply",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"comment",
+										"create-reply"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateReply",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reply\":\"This is wow\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/userapp/comment/update-reply?replyId=66462e9e1250d04949f0b8a9&&commentId=66461bad3a71b642fb93b9da",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"comment",
+										"update-reply"
+									],
+									"query": [
+										{
+											"key": "replyId",
+											"value": "66462e9e1250d04949f0b8a9"
+										},
+										{
+											"key": null,
+											"value": null
+										},
+										{
+											"key": "commentId",
+											"value": "66461bad3a71b642fb93b9da"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteReply",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/userapp/comment/delete-reply?replyId=66462e9e1250d04949f0b8a9&&commentId=66461bad3a71b642fb93b9da",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"comment",
+										"delete-reply"
+									],
+									"query": [
+										{
+											"key": "replyId",
+											"value": "66462e9e1250d04949f0b8a9"
+										},
+										{
+											"key": null,
+											"value": null
+										},
+										{
+											"key": "commentId",
+											"value": "66461bad3a71b642fb93b9da"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/userapp/comment/get/66461bad3a71b642fb93b9da",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"comment",
+										"get",
+										"66461bad3a71b642fb93b9da"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comment\":\" To craft an engaging and thoughtful comment for a blog\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/userapp/comment/update/66461bad3a71b642fb93b9da",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"comment",
+										"update",
+										"66461bad3a71b642fb93b9da"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "authRoute",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"vikash kumar\",\r\n    \"email\":\"vksr2063@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/userapp/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"userapp",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"vksr2063@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/userapp/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"userapp",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "send-otp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"vksr2063@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/userapp/auth/send-otp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"userapp",
+										"auth",
+										"send-otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reset-password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\":214998,\r\n    \"newPassword\":\"987654321\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/userapp/auth/reset-password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"userapp",
+										"auth",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "validate-otp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"otp\":243505\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/auth/validate-otp",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"auth",
+										"validate-otp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "userRoute",
+					"item": [
+						{
+							"name": "getuser",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/userapp/user/me",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"user",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateUser",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"vikashkumarvidyarthi45200@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/userapp/user/update/66322a107aa5b536e7ce89e9",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"userapp",
+										"user",
+										"update",
+										"66322a107aa5b536e7ce89e9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "soft-delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/admin/user/soft-delete/663367a06479214684bedd27",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"user",
+										"soft-delete",
+										"663367a06479214684bedd27"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllUsers",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\":{\"$or\": [ {\"email\" : {\"$regex\" : \"Do\",\"$options\": \"i\"}},{\"userType\":\"admin\"}]},\r\n  \"options\": {\r\n    \"collation\": \"\",\r\n    \"sort\": {\"email\":1},\r\n    \"populate\": \"\",\r\n    \"projection\": \"\",\r\n    \"lean\": false,\r\n    \"leanWithId\": true,\r\n    \"page\": 1,\r\n    \"limit\": 4,\r\n    \"pagination\": true,\r\n    \"useEstimatedCount\": false,\r\n    \"useCustomCountFn\": false,\r\n    \"forceCountFn\": false,\r\n    \"read\": {},\r\n    \"options\": {}\r\n  }\r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/user/list",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"user",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUserCount",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"where\": {\r\n    \"isActive\": true\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/user/count",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"user",
+										"count"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteUser",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "blogRoutes",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\"title\" :\"Website for Education\",\r\n        \"subTitle\" : \"this most power full website for education create in React.js\",\r\n      \"category\":\"website\",\r\n    \"description\":\"Loremkjnksn\",\r\n      \"image\" : \"https://images.pexels.com/photos/4050287/pexels-photo-4050287.jpeg\"\r\n     \r\n      \r\n    \r\n      \r\n     \r\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/blog/create",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"blog",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addBulk",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"data\":[\r\n     {\"title\" :\"Website for Education\",\r\n        \"subTitle\" : \"this most power full website for education create in React.js\",\r\n      \"category\":\"website\",\r\n    \"description\":\"Loremkjnksn\",\r\n      \"image\" : \"https://images.pexels.com/photos/4050287/pexels-photo-4050287.jpeg\"\r\n     \r\n      \r\n    \r\n      \r\n     \r\n  },\r\n   {\"title\" :\"Website for Education\",\r\n        \"subTitle\" : \"this most power full website for education create in React.js\",\r\n      \"category\":\"website\",\r\n    \"description\":\"Loremkjnksn\",\r\n      \"image\" : \"https://images.pexels.com/photos/4050287/pexels-photo-4050287.jpeg\"\r\n     \r\n      \r\n    \r\n      \r\n     \r\n  },\r\n   {\"title\" :\"Website for Education\",\r\n        \"subTitle\" : \"this most power full website for education create in React.js\",\r\n      \"category\":\"website\",\r\n    \"description\":\"Loremkjnksn\",\r\n      \"image\" : \"https://images.pexels.com/photos/4050287/pexels-photo-4050287.jpeg\"\r\n     \r\n      \r\n    \r\n      \r\n     \r\n  }\r\n   ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/blog/add-bulk",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"blog",
+										"add-bulk"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"data\":[\r\n     {\"title\" :\"Website for Education\",\r\n        \"subTitle\" : \"this most power full website for education create in React.js\",\r\n      \"category\":\"website\",\r\n    \"description\":\"Loremkjnksn\",\r\n      \"image\" : \"https://images.pexels.com/photos/4050287/pexels-photo-4050287.jpeg\"\r\n     \r\n      \r\n    \r\n      \r\n     \r\n  },\r\n   {\"title\" :\"Website for Education\",\r\n        \"subTitle\" : \"this most power full website for education create in React.js\",\r\n      \"category\":\"website\",\r\n    \"description\":\"Loremkjnksn\",\r\n      \"image\" : \"https://images.pexels.com/photos/4050287/pexels-photo-4050287.jpeg\"\r\n     \r\n      \r\n    \r\n      \r\n     \r\n  },\r\n   {\"title\" :\"Website for Education\",\r\n        \"subTitle\" : \"this most power full website for education create in React.js\",\r\n      \"category\":\"website\",\r\n    \"description\":\"Loremkjnksn\",\r\n      \"image\" : \"https://images.pexels.com/photos/4050287/pexels-photo-4050287.jpeg\"\r\n     \r\n      \r\n    \r\n      \r\n     \r\n  }\r\n   ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/blog/add-bulk",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"blog",
+										"add-bulk"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "count",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"where\": {\r\n  \" isActive\":true\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/blog/count",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"blog",
+										"count"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/blog/get/664475b6c488b9b8a3c5c1d6",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"blog",
+										"get",
+										"664475b6c488b9b8a3c5c1d6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n                    \"title\": \"Website for Education\",\r\n                    \"subTitle\": \"this most power full website create in Next.js\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/blog/update/664475b6c488b9b8a3c5c1d6",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"blog",
+										"update",
+										"664475b6c488b9b8a3c5c1d6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateBulk",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"filter\": {\r\n    \"isActive\": true\r\n  },\r\n  \"data\": {\r\n    \"isDeleted\": false\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/blog/update-bulk",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"blog",
+										"update-bulk"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "softDelete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/admin/blog/soft-delete/664475b6c488b9b8a3c5c1d6",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"blog",
+										"soft-delete",
+										"664475b6c488b9b8a3c5c1d6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/admin/blog/soft-delete/664475b6c488b9b8a3c5c1d6",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"blog",
+										"soft-delete",
+										"664475b6c488b9b8a3c5c1d6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "BulkSoftDelete",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{adminToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \r\n  \"ids\": [\r\n    \"66447daa44b79cc85493ffe0\",\r\n  \"66447daa44b79cc85493ffe1\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/admin/blog/bulk-soft-delete",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"admin",
+										"blog",
+										"bulk-soft-delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete-many",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "fileUploadRoutes",
+					"item": [
+						{
+							"name": "upload",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "files",
+											"contentType": "image/gif",
+											"type": "file",
+											"src": "/C:/Users/91726/Downloads/Pexels Videos 1536322.mp4"
+										},
+										{
+											"key": "",
+											"value": "",
+											"contentType": "application/json",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/file/upload",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"file",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "generate-pre-signed-url",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "files",
+											"contentType": "image/gif",
+											"type": "file",
+											"src": "/C:/Users/DIWAKAR KUMAR/Pictures/wallpaper/TECH/Abstract Background Digital Technology 00552_Preview.jpg"
+										},
+										{
+											"key": "",
+											"value": "",
+											"contentType": "application/json",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/file/upload",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"file",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDQ3M2VhYjM3NzkyNTlkMTBlZGM2NCIsImVtYWlsIjoidmtzcjIwQGdtYWlsLmNvbSIsImlhdCI6MTcxNTg3MDQ2OSwiZXhwIjoxNzE2NDcwNDY5fQ.KOs1cXrypjRvS_1APZmOKy6BemY8wCKmc8f7oqzoTuk",
+			"type": "string"
+		},
+		{
+			"key": "adminToken",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDQ3NDk3YjM3NzkyNTlkMTBlZGM2ZCIsImVtYWlsIjoidmtzcjJAZ21haWwuY29tIiwiaWF0IjoxNzE1NzYyMzM3LCJleHAiOjE3MTYzNjIzMzd9.xpagM2ZOPfeq9ZnSu624k3-QuTlMPlTjQFSxkMLCuko",
+			"type": "string"
+		}
+	]
+}
