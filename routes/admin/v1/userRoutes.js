@@ -1,6 +1,6 @@
 import express from "express"
 import { PLATFORM } from "../../../constants/authConstant.js";
-import { addUser, deleteUser, findAllUsers, getLoggedinUser, getUser, getUserCount, softDeleteUser, updateUser } from "../../../controller/admin/v1/userController.js";
+import { BulkDelete, addUser, deleteUser, findAllUsers, getLoggedinUser, getUser, getUserCount, softDeleteUser, updateUser } from "../../../controller/admin/v1/userController.js";
 import { auth } from "../../../middleware/auth.js";
 
 
@@ -14,6 +14,7 @@ router.delete("/soft-delete/:id",auth(PLATFORM.ADMIN),softDeleteUser)
 router.post("/list",auth(PLATFORM.ADMIN),findAllUsers);
 router.post("/count",auth(PLATFORM.ADMIN),getUserCount);
 router.delete("/delete/:id",auth(PLATFORM.ADMIN),deleteUser);
+router.delete("/bulk-delete",auth(PLATFORM.ADMIN),BulkDelete);
 
 
 

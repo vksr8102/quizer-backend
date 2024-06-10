@@ -2,7 +2,7 @@
 import { user } from "../../../model/user.js";
 import { asyncHandler } from "../../../utils/asyncHandler.js";
 import { checkUniqueFieldsInDatabase } from "../../../utils/comon.js";
-import { count, create, deleteOne, findOne, paginate, updateOne } from "../../../utils/dbServices.js";
+import { count, create, deleteMany, deleteOne, findOne, paginate, updateOne } from "../../../utils/dbServices.js";
 import { findFilterKeys, schemaKeys, updateSchemaKeys } from "../../../utils/validation/userValidation.js";
 import { validateFilterWithJoi, validateParamsWithJoi } from "../../../utils/validationRequest.js";
 
@@ -279,7 +279,34 @@ if (!deleteUser) {
     } catch (error) {
         
     }
-})
+});
+
+
+/**
+ * @description : delete documents of users in table by using ids.
+ * @param {Object} req : request including array of ids in request body.
+ * @param {Object} res : response contains no of documents deleted.
+ * @return {Object} : no of documents deleted. {status, message, data}
+ */
+
+const BulkDelete = asyncHandler(async(req,res)=>{
+    try {
+       let ids = req.body.ids;
+       if(!ids || !Array.isArray(ids) || ids.length<1){
+        return res.badRequest();
+       } 
+
+       const query = {_id:{$in:ids}};
+       const deletedQuestion = await deleteMany(user,query);
+       if(!deletedQuestion){
+        return res.recordNotFound();
+       }
+
+       return res.success({ message:`${deletedQuestion}  ${deletedQuestion>1 ?"users":"user"} deleted Successfully` });
+    } catch (error) {
+        return res.internalServerError({message:error.message})
+    }
+ })
 export {
     getLoggedinUser,
     updateUser,
@@ -288,5 +315,6 @@ export {
     findAllUsers,
     getUserCount,
     deleteUser,
-    getUser
+    getUser,
+    BulkDelete
 }
