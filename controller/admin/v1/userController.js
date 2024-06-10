@@ -120,7 +120,7 @@ const addUser = async (req, res) => {
       let {
         name,email,createdBy
       } = req.body;
-      if (!createdBy || !email && !name) {
+      if (!createdBy || !email || !name) {
         return res.badRequest({ message: 'Insufficient request parameters! email , name and admin  is required.' });
       }
       
