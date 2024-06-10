@@ -2,8 +2,6 @@ import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2"
 import { convertObjectToEnum } from "../utils/comon.js";
 import { USER_TYPE } from "../constants/authConstant.js";
-import idValidator from "mongoose-id-validator"
-import uniqueValidator from "mongoose-unique-validator"
 import bcrypt from "bcrypt"
 
 const myCustomLables ={
@@ -108,6 +106,4 @@ UserSchema.method('toJSON',function(){
 })
 
 UserSchema.plugin(mongoosePaginate)
-UserSchema.plugin(idValidator);
-UserSchema.plugin(uniqueValidator,{message:'Error,expected {VALUE} to be unique.'});
 export const user = mongoose.model("user",UserSchema);

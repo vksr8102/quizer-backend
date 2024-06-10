@@ -1,3 +1,4 @@
+
 import { user } from "../../../model/user.js";
 import { asyncHandler } from "../../../utils/asyncHandler.js";
 import { checkUniqueFieldsInDatabase } from "../../../utils/comon.js";
@@ -120,8 +121,9 @@ const addUser = async (req, res) => {
       let {
         name,email,createdBy
       } = req.body;
+      console.log(!createdBy || !name )
       if (!createdBy || !email || !name) {
-        return res.badRequest({ message: 'Insufficient request parameters! email , name and admin  is required.' });
+        return res.badRequest({ message: 'Insufficient request parameters! email , name  and admin  is required.' });
       }
       
       if(req.user.id.toString()!==createdBy.toString())
@@ -130,7 +132,7 @@ const addUser = async (req, res) => {
       let dataToCreate = { ...req.body || {} };
       let validateRequest = validateParamsWithJoi(
         dataToCreate,
-       schemaKeys);
+        schemaKeys);
       if (!validateRequest.isValid) {
         return res.validationError({ message : `Invalid values in parameters, ${validateRequest.message}` });
       }
@@ -138,14 +140,13 @@ const addUser = async (req, res) => {
        // check data availble in database or not
       
        if(req.body.email){
-        let checkUniqueFields = await checkUniqueFieldsInDatabase(user,dataToCreate,['email'],'REGISTER');
-        if (checkUniqueFields?.isDuplicate){
-          return res.validationError({ message : `${checkUniqueFields.value} already exists.Unique ${checkUniqueFields.field} are allowed.` });
+        let checkUniqueFields = await checkUniqueFieldsInDatabase(user,dataToCreate,["email"],"REGISTER");
+        if(checkUniqueFields?.isDuplicate){
+            return res.validationError({message:`${checkUniqueFields.value} already exists.Unique ${checkUniqueFields.field} are allowed.`})
         }
     }
-   
-  
-      dataToCreate = new user(dataToCreate);
+
+ 
       let createdUser = await create(user,dataToCreate);
     
       return res.success({ data : createdUser });
@@ -153,6 +154,7 @@ const addUser = async (req, res) => {
       return res.internalServerError({ message:error.message }); 
     }
   };
+  
 
 
 

@@ -30,10 +30,11 @@ const   convertObjectToEnum = (obj) =>{
  */
 
  const  checkUniqueFieldsInDatabase = async (model,data,fieldsToCheck,operation,filter={})=>{
+console.log(fieldsToCheck)
     switch(operation){
       case "REGISTER":
         for(let field of fieldsToCheck){
-
+console.log(data[field])
           let query;
           query = {
             ...filter,
@@ -46,7 +47,6 @@ const   convertObjectToEnum = (obj) =>{
               isDuplicate:true,
               field:field,
               value:data[field]
-
             }
           }
         }
