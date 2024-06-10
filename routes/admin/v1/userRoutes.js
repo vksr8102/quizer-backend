@@ -14,7 +14,7 @@ router.delete("/soft-delete/:id",auth(PLATFORM.ADMIN),softDeleteUser)
 router.post("/list",auth(PLATFORM.ADMIN),findAllUsers);
 router.post("/count",auth(PLATFORM.ADMIN),getUserCount);
 router.delete("/delete/:id",auth(PLATFORM.ADMIN),deleteUser);
-router.delete("/bulk-delete",auth(PLATFORM.ADMIN),BulkDelete);
+router.post("/bulk-delete",auth(PLATFORM.ADMIN),BulkDelete);
 
 
 
