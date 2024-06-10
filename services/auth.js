@@ -100,107 +100,103 @@ const sendInvitationEamilforQuiz = async(email,password,quiz)=>{
 
 
 const userLogin = async(username,password,plateform)=>{
-    try {
-      let data ;
-     
-        data={email:username}
-      
-    data.isActive=true;
-    data.isDeleted=false;
-    const userData=  await findOne(user,data);
-  
-    if(userData){
-    if(userData.loginRetryLimit >= MAX_RETRY_LIMIT){
-      let now =dayjs()
-      if(userData.loginReactiveTime){
-       
-        let limitTime = dayjs(userData.loginReactiveTime)
-        console.log("limitTime",limitTime)
-        if(limitTime>now){
-          let expireTime =dayjs().add(LOGIN_REACTIVE_TIME,'minute');
-          if(!(limitTime>expireTime)){
-            return {
-              flag:true,
-              data:`you have exceed number of limit.you can login after ${getDifferenceOfTwoDatesInTime(now,expireTime)}`
-            };
-          }
+  try {
+    let data ;
+   
+      data={email:username}
     
-         await updateOne(user,{_id:userData.id},{
-          loginReactiveTime: expireTime.toISOString(),
-          loginRetryLimit: userData.loginRetryLimit + 1
-         });
-         return{
-          flag:true,
-          data:`you have exceed number of limit.you can login after ${getDifferenceOfTwoDatesInTime(now,expireTime)}`
-         };
-        }else{
-          await updateOne(user,{_id:userData.id},{
-            loginReactiveTime: '',
-            loginRetryLimit: 0
-           },{new:true});
+  data.isActive=true;
+  data.isDeleted=false;
+  const userData=  await findOne(user,data);
+  if(userData){
+  if(userData.loginRetryLimit >= MAX_RETRY_LIMIT){
+    let now =dayjs()
+    if (userData.loginReactiveTime) {
+      let limitTime = dayjs(userData.loginReactiveTime);
+      if (limitTime > now) {
+          let expireTime = dayjs().add(LOGIN_REACTIVE_TIME, 'minute');
+          if (!(limitTime > expireTime)) {
+              return {
+                  flag: true,
+                  data: `you have exceed the number of limit.you can login after ${getDifferenceOfTwoDatesInTime(now, limitTime)}.`
+              };
+          }
+          await updateOne(user, { _id: userData.id }, {
+              loginReactiveTime: expireTime.toISOString(),
+              loginRetryLimit: user.loginRetryLimit + 1
+          });
+          return {
+              flag: true,
+              data: `you have exceed the number of limit.you can login after ${getDifferenceOfTwoDatesInTime(now, expireTime)}.`
+          };
+      } else {
+          user = await updateOne(user, { _id: userData.id }, {
+              loginReactiveTime: '',
+              loginRetryLimit: 0
+          }, { new: true });
+      }
+  } else {
+      // send error
+      let expireTime = dayjs().add(LOGIN_REACTIVE_TIME, 'minute');
+      await updateOne(user,
+          { _id: userData.id, isDeleted: false },
+          {
+              loginReactiveTime: expireTime.toISOString(),
+              loginRetryLimit: userData.loginRetryLimit + 1
+          });
+      return {
+          flag: true,
+          data: `you have exceed the number of limit.you can login after ${getDifferenceOfTwoDatesInTime(now, expireTime)}.`
+      };
+  }
+  }
+  if(password){
+    const isPasswordMatched = await userData.isPasswordMatch(password);
+    
+    if (!isPasswordMatched) {
+      await updateOne(user,
+        {_id:userData.id,isActive:true,isDeleted:false},
+        {
+          loginRetryLimit:userData.loginRetryLimit+1
         }
-      }else{
-        let expireTime =dayjs().add(LOGIN_REACTIVE_TIME,'minute');
-        await findOne(user,
-          {_id:userData.id,isActive:true,isDeleted:false},
-          {
-            loginReactiveTime:expireTime.toISOString(),
-            loginRetryLimit:userData.loginReactiveTime+1
-          }
-          );
-          return{
-            flag:true,
-            data:`you have exceed number of limit.you can login after ${getDifferenceOfTwoDatesInTime(now,expireTime)}`
-           };
-      }
+        );
+        return  {flag:true,data:"Invalid Credential"}
+  }
+  
+  }
+  
+  let userJsonData = userData.toJSON();
+  let token ;
+  if(!userData.userType){
+    return {flag:true,data:"you are not asign for any role"}
+  }
+  
+  if(plateform == PLATFORM.USERAPP){
+    if(!LOGIN_ACCESS[userData.userType].includes(PLATFORM.USERAPP)){
+      return {flag:true,message:"You are not authorizes  to access this plateform"};
     }
-    if(password){
-      const isPasswordMatched = await userData.isPasswordMatch(password);
-      console.log(isPasswordMatched)
-      if (!isPasswordMatched) {
-        await updateOne(user,
-          {_id:userData.id,isActive:true,isDeleted:false},
-          {
-            loginRetryLimit:userData.loginRetryLimit+1
-          }
-          );
-          return  {flag:true,data:"Invalid Credential"}
-    }
-    
-    }
-    
-    let userJsonData = userData.toJSON();
-    let token ;
-    if(!userData.userType){
-      return {flag:true,data:"you are not asign for any role"}
-    }
-    
-    if(plateform == PLATFORM.USERAPP){
-      if(!LOGIN_ACCESS[userData.userType].includes(PLATFORM.USERAPP)){
-        return {flag:true,message:"You are not authorizes  to access this plateform"};
-      }
-    token = await generateToken(userJsonData,JWT.USERAPP_SECRET)
-    console.log(token)
-    }
-    else if(plateform == PLATFORM.ADMIN){
-      if(!LOGIN_ACCESS[userData.userType].includes(PLATFORM.ADMIN)){
-        return {flag:true,message:"You are not authorizes  to access this plateform"};
-      }
-    token = await generateToken(userJsonData,JWT.ADMIN_SECRET)
-    }
-    
-    
-    
-    let userReturnData = {...userJsonData,token};
+  token = await generateToken(userJsonData,JWT.USERAPP_SECRET)
 
-    return {flag:false,data:userReturnData}
-    }else{
-      return {flag:true,data:"user doesn't exist"}
+  }
+  else if(plateform == PLATFORM.ADMIN){
+    if(!LOGIN_ACCESS[userData.userType].includes(PLATFORM.ADMIN)){
+      return {flag:true,message:"You are not authorizes  to access this plateform"};
     }
-    } catch (error) {
-      throw new Error(error.message);
-    }
-    }
+  token = await generateToken(userJsonData,JWT.ADMIN_SECRET)
+  }
+  
+  
+  
+  let userReturnData = {...userJsonData,token};
+
+  return {flag:false,data:userReturnData}
+  }else{
+    return {flag:true,data:"user doesn't exist"}
+  }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+  }
 
 
   /**
