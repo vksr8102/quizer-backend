@@ -237,7 +237,23 @@ return res.success({data:{count:countUser}})
 })
 
 
+const getUser =asyncHandler(async(req,res)=>{
+    try {
+       const userId = req.params.id;
+       if(!userId){
+return res.badRequest({ message: 'Insufficient request parameters! id  is required'})
+       }
+       let query = {_id:userId}
+       const userData= await findOne(user,query);
 
+       if(!userData){
+        return res.recordNotFound();
+       }
+       return res.success({data:userData})
+    } catch (error) {
+        return res.internalServerError({message:error.message}) 
+    }
+})
 
 /**
  * @description :deleted  document of user from table by id;
@@ -269,5 +285,6 @@ export {
     addUser,
     findAllUsers,
     getUserCount,
-    deleteUser
+    deleteUser,
+    getUser
 }
